@@ -33,7 +33,7 @@
     } while (k <= 8);
     printf("\n");
     printf("Novo Commit \n");
-
+printf("novo commit \n");
            
 
     return 0;
