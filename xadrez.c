@@ -51,7 +51,7 @@
     casas_horizontais++;
     }
     printf("\n");
-    printf("Novo commit\n");
+    printf("Novo commit \n");
 
 
     
