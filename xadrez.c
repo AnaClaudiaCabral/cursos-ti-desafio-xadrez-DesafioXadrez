@@ -80,6 +80,6 @@ int main() {
             j++;
         }
     }
-
+printf("NOVO COMMIT\n");
     return 0;
 }
