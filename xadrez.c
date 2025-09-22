@@ -2,59 +2,84 @@
 
 // Desafio de Xadrez - MateCheck
 // Ana Claudia Cabral
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
-// Nível Aventureiro - Movimentando o Cavalo
-    
-    int main() {
-    // Simulação de Movimentação da Torre - estrutura de repetição for
-    printf("Movimento da Torre: \n");
-    for(int i = 1; i <= 5; i ++) {
-    printf("Direita - \t");
-    printf("Torre moveu 1 casa para a Direita (total: %d casas)\n",i);
-    } 
-    printf("\n");
-    
-    // Simulação de Movimentação da Bispo - estrutura de repetição while
-    printf("Movimento Bispo:\n");
-    int j = 1;
-    while (j <= 5)
-    {
-    printf("Cima Direira - \t");
-    printf("Bispo moveu 1 casa na diagonal (Cima, Direita) (total: %d casas)\n", j);
-    j++;
+// Nível Mestre - Movimentos Complexos
+
+#include <stdio.h>
+
+// Função recursiva para o movimento da Torre
+void moverTorre(int casas) {
+    if (casas > 0) {
+        printf("Direita\n");
+        moverTorre(casas - 1); // Chamada recursiva para mover a próxima casa
     }
+}
+
+// Função recursiva para o movimento do Bispo
+void moverBispoRecursivo(int casas) {
+    if (casas > 0) {
+        printf("Cima Direita\n");
+        moverBispoRecursivo(casas - 1); // Chamada recursiva
+    }
+}
+
+// Função para o movimento do Bispo com loops aninhados
+void moverBispoAninhado(int casas) {
+    // Loop externo para movimento vertical
+    for (int i = 0; i < casas; i++) {
+        // Loop interno para movimento horizontal
+        for (int j = 0; j < 1; j++) {
+            printf("Cima Direita\n");
+        }
+    }
+}
+
+// Função recursiva para o movimento da Rainha
+void moverRainha(int casas) {
+    if (casas > 0) {
+        printf("Esquerda\n");
+        moverRainha(casas - 1); // Chamada recursiva
+    }
+}
+
+int main() {
+    // Definindo o número de casas a mover
+    const int CASAS_TORRE = 5;
+    const int CASAS_BISPO = 5;
+    const int CASAS_RAINHA = 8;
+
+    // Simulação do movimento da Torre (usando recursividade)
+    printf("Movimento da Torre:\n");
+    moverTorre(CASAS_TORRE);
     printf("\n");
 
-    // Simulação de Movimentação da rainha - estrutura de repetição do-while
-    printf("Movimento da Rainha: \n");
-    int k = 1;
-    do {
-    printf("Esquerda - \t");
-    printf("Rainha moveu 1 casa para a Esquerda (total: %d casas)\n", k);
-    k++;
-    } while (k <= 8);
+    // Simulação do movimento do Bispo (usando recursividade)
+    printf("Movimento do Bispo (Recursivo):\n");
+    moverBispoRecursivo(CASAS_BISPO);
     printf("\n");
 
-    //Simulação de Movimento do Cavalo - usando for e while aninhados
-    printf("Movimento do Cavalo: \n");
-    int casas_verticais;
-    for (casas_verticais = 1; casas_verticais <= 2; casas_verticais++){
-    printf("Cima - \t");
-    printf("Cavalo moveu 2 casas para cima (total: %d casas)\n", casas_verticais);
+    // Simulação do movimento do Bispo (usando loops aninhados)
+    printf("Movimento do Bispo (Loops Aninhados):\n");
+    moverBispoAninhado(CASAS_BISPO);
+    printf("\n");
+
+    // Simulação do movimento da Rainha (usando recursividade)
+    printf("Movimento da Rainha:\n");
+    moverRainha(CASAS_RAINHA);
+    printf("\n");
+
+    // Simulação do movimento do Cavalo (usando loop complexo)
+    // Movimento em "L": 2 casas para cima, 1 para a direita.
+    printf("Movimento do Cavalo:\n");
+    // i controla o movimento para cima, j controla o movimento para a direita
+    for (int i = 0, j = 0; i < 2 || j < 1; ) {
+        if (i < 2) {
+            printf("Cima\n");
+            i++;
+        } else if (j < 1) {
+            printf("Direita\n");
+            j++;
+        }
     }
 
-    int casas_horizontais = 1;
-    while (casas_horizontais <= 1){
-    printf("Direita - \t");
-    printf("Cavalo moveu 1 casa para a Direita (total: %d casas)\n", casas_horizontais);
-    casas_horizontais++;
-    }
-    printf("\n");
-    printf("Novo commit \n");
-
-
-    
-
-return 0;
+    return 0;
 }
